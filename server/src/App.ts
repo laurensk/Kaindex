@@ -1,5 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import path, { resolve } from "path";
+import { router } from "./Router";
+
 import dotenv from "dotenv";
 dotenv.config({ path: resolve(__dirname, "../.env") });
 
@@ -15,9 +17,7 @@ function localRestricted(req: Request, res: Response, next: NextFunction) {
   res.sendFile(path.join(__dirname, "..", "..", "build", "index.html"));
 }
 
-app.get("/api", localRestricted, (res, req) => {
-  req.send("api");
-});
+app.use("/api", localRestricted, router);
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "..", "build", "index.html"));
