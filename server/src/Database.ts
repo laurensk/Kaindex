@@ -4,7 +4,7 @@ import mysql from "mysql";
 import dotenv from "dotenv";
 dotenv.config({ path: resolve(__dirname, "../.env") });
 
-export var connection = mysql.createPool({
+export const Sql = mysql.createPool({
   connectionLimit: 10,
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT) || 3306,
