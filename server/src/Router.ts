@@ -1,8 +1,8 @@
-import cars from "./routes/cars1";
-import classrooms from "./routes/classrooms1";
-import departments from "./routes/departments1";
-import teachers from "./routes/teachers1";
-import user from "./routes/user1";
+import cars from "./routes/cars";
+import classrooms from "./routes/classrooms";
+import departments from "./routes/departments";
+import teachers from "./routes/teachers";
+import user from "./routes/user";
 
 import express from "express";
 export const router = express.Router();
