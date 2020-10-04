@@ -1,6 +1,5 @@
-import { Request } from "express";
+import { Request, Response, NextFunction } from "express";
 import { Sql } from "../../Database";
-import { NextFunction } from "express";
 import { Error } from "../helpers/ErrorHandling";
 
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
