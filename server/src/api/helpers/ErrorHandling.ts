@@ -16,6 +16,6 @@ export class Error {
   static invalidToken = { statusCode: 400, message: "INVALID_TOKEN" };
   static unknownError = { statusCode: 400, message: "ERROR" };
   static validationError = { statusCode: 400, message: "VALIDATION_ERROR" };
-  static emailExists = { statusCode: 400, message: "EMAIL_EXISTS" };
+  static loginExists = { statusCode: 400, message: "LOGIN_EXISTS" };
   static loginFailed = { statusCode: 400, message: "LOGIN_FAILED" };
 }
