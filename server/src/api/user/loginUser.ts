@@ -4,12 +4,14 @@ import Bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
 import uuid from "uuid";
 import { User } from "../../models/User.model";
+import Debug from "../helpers/Debug";
 
 export const loginUser = (login: string, password: string, callback: Function) => {
   Sql.query(
     "SELECT useId, useName, useLogin, useAdmin, useActive FROM HTLUsers WHERE useLogin = ?",
     [login],
     async (err, rows) => {
+      Debug.log(err);
       if (err) return callback(Error.unknownError, null);
       if (rows.length != 1) return callback(Error.loginFailed, null);
 
@@ -23,6 +25,7 @@ export const loginUser = (login: string, password: string, callback: Function) =
         "INSERT INTO HTLTokens (tokId, tokToken, tokUseId, tokValid) VALUES (?, ?, ?, TRUE)",
         [uuid.v4(), token, dbUser.useId],
         (err) => {
+          Debug.log(err);
           if (err) return callback(Error.unknownError, null);
           const user = new User(dbUser.useId, dbUser.useName, dbUser.useLogin, dbUser.useAdmin, dbUser.useActive);
           callback(null, user, token);
